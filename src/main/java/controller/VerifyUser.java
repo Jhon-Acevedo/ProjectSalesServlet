@@ -17,8 +17,8 @@ import model.Shop;
  */
 @WebServlet("/VerifyUser")
 public class VerifyUser extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -27,43 +27,44 @@ public class VerifyUser extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.getWriter().append("Served at: ").append(request.getContextPath());
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-		String user = String.valueOf(request.getParameter("user"));
-		String password = String.valueOf(request.getParameter("password"));
-		
-		Shop shop = Controller.getShop();
-		boolean verify = shop.verifyClient(user, password);
-	    
-		if(verify) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/catalog.jsp");
-	        dispatcher.forward(request, response);
-		}else {
-			PrintWriter out;
-		    out = response.getWriter();
-		    response.setContentType("text/html");
-		    out.println("<html>");
-			out.println("<head> <title>Error de validación</title>"
-					+ "<link rel=\"stylesheet\" href=\"css/login.css\">");
-            out.println("</head>");
-			out.println("<body>");
-			out.println("<section id=\"container\">"
-					+ "<label>Datos incorrectos</label>"
-					+ "<button><a href=\"index.jsp\">Intentar de nuevo</a></button>"
-					+ "</section>");
-            out.println("</body></html>");
-		}
-	}
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+        String user = String.valueOf(request.getParameter("user"));
+        String password = String.valueOf(request.getParameter("password"));
+
+        Shop shop = Controller.getShop();
+        boolean verify = shop.verifyClient(user, password);
+
+        RequestDispatcher dispatcher = null;
+        if (verify) {
+            dispatcher = request.getRequestDispatcher("/catalog.jsp");
+            dispatcher.forward(request, response);
+            request.setAttribute("status", "success");
+        } else {
+//            PrintWriter out;
+//            out = response.getWriter();
+//            response.setContentType("text/html");
+//            out.println("<script type=\"text/javascript\">");
+//            out.println("alert('Su usuario o contraseña es INVALIDO');");
+//            out.println("location='index.jsp';");
+//            out.println("</script>");
+
+
+            request.setAttribute("status", "failed");
+//            response.sendRedirect("index.jsp");
+            dispatcher = request.getRequestDispatcher("index.jsp");
+            System.out.println("status: " + request.getAttribute("status"));
+        }
+        dispatcher.forward(request, response);
+    }
 }

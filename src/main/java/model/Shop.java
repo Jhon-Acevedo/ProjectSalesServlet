@@ -36,7 +36,6 @@ public class Shop {
 			bills = daoBill.uploadArrayList();
 			clients = daoClient.uploadArrayList();
 			products = daoProduct.uploadArrayList();
-
 		} catch (ClassNotFoundException | SQLException e2) {
 			e2.printStackTrace();
 		}
@@ -119,11 +118,10 @@ public class Shop {
 		return detailsPurchase;
 	}
 	
-	public Product productPurchase(int idProducto) {
+	public Product productPurchase(int idProduct) {
 		for (Product product : products) {
-			if(idProducto == product.getId()) {
+			if(idProduct == product.getId())
 				return product;
-			}
 		}
 		return null;
 	}

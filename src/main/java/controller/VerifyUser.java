@@ -24,7 +24,6 @@ public class VerifyUser extends HttpServlet {
      */
     public VerifyUser() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -41,27 +40,14 @@ public class VerifyUser extends HttpServlet {
         doGet(request, response);
         String user = String.valueOf(request.getParameter("user"));
         String password = String.valueOf(request.getParameter("password"));
-
         Shop shop = Controller.getShop();
         boolean verify = shop.verifyClient(user, password);
-
         RequestDispatcher dispatcher = null;
         if (verify) {
             dispatcher = request.getRequestDispatcher("/catalog.jsp");
             dispatcher.forward(request, response);
-            request.setAttribute("status", "success");
         } else {
-//            PrintWriter out;
-//            out = response.getWriter();
-//            response.setContentType("text/html");
-//            out.println("<script type=\"text/javascript\">");
-//            out.println("alert('Su usuario o contraseña es INVALIDO');");
-//            out.println("location='index.jsp';");
-//            out.println("</script>");
-
-
             request.setAttribute("status", "failed");
-//            response.sendRedirect("index.jsp");
             dispatcher = request.getRequestDispatcher("index.jsp");
             System.out.println("status: " + request.getAttribute("status"));
         }

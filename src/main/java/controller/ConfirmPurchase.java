@@ -44,16 +44,27 @@ public class ConfirmPurchase extends HttpServlet {
 
         PrintWriter out;
         out = response.getWriter();
+//        response.setContentType("text/html");
+
         response.setContentType("text/html");
         out.println("<html>");
         out.println("<head> <title>Confirmación de pedido</title>"
                 + "<link rel=\"stylesheet\" href=\"css/login.css\">");
+        out.println("<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\n" +
+                "          integrity=\"sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi\" crossorigin=\"anonymous\">\n" +
+                "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css\">\n" +
+                "    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js\"></script>");
+        out.println();
         out.println("</head>");
         out.println("<body>");
         out.println("<section id=\"container\">"
                 + "<label>Confirmación de pedido exitosa: sus productos llegarán muy pronto a su casa</label>"
                 + "<button><a href=\"catalog.jsp\">Regresar al catálogo</a></button>"
                 + "</section>");
+        out.println("<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js\"\n" +
+                "        integrity=\"sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3\"\n" +
+                "        crossorigin=\"anonymous\">\n" +
+                "</script>\n");
         out.println("</body></html>");
     }
 

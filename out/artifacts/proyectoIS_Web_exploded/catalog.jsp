@@ -58,7 +58,7 @@
                         + "<td>" + product.getCost() + "</td>"
                         + "<td>" + product.getStock() + "</td>"
                         + "<td> <input name=\"quantity\" type=\"number\" max=\"" + product.getStock()
-                        + "\" min=\"1\" value=\"1\"></td>" + "<td><button>Comprar</button> </td>");
+                        + "\" min=\"1\" value=\"1\"></td>" + "<td><button id='btn-buy-product'>Comprar</button> </td>");
                 out.print("</form>");
                 out.print("</tr>");
             }
@@ -78,6 +78,17 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous">
+</script>
+
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js" ></script>
+<link rel="stylesheet" href="alert/dist/sweetalert.css">
+
+<script>
+    var button = document.button;
+    button.onclick = function(e) {
+        e.preventDefault();
+        swal("Producto agregado al carrito", "¡Gracias por su compra!", "success");
+    }
 </script>
 
 </body>

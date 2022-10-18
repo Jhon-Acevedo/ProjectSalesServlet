@@ -1,4 +1,4 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach" %>
+<%--<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach" %>--%>
 <%@page import="controller.Controller" %>
 <%@page import="model.Product" %>
 <%@page import="java.util.ArrayList" %>

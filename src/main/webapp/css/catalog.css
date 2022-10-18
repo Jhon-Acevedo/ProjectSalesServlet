@@ -54,19 +54,19 @@ nav.navbar ul.nav li:hover {
     touch-action: manipulation;
     cursor: pointer;
     background-image: none;
-    padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857143;
-    border-radius: 4px;
     color: #fff;
-    background-color: #5cb85c;
-    border-color: #4cae4c;
+    background-color: #1ae144;
+    border-color: #1ae144;
+    padding: 10px;
+    border-radius: 6px;
 }
 
 #finish_button:hover {
     color: #fff;
-    background-color: #255425;
-    border-color: #255425;
+    background-color: #05c705;
+    border-color: #05c705;
 }
 
 #quantity {
